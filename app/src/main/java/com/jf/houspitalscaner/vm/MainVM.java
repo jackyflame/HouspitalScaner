@@ -6,6 +6,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.FragmentActivity;
 
+import com.haozi.baselibrary.constants.SPKeys;
+import com.haozi.baselibrary.db.MyShareDbHelper;
 import com.jf.houspitalscaner.BR;
 import com.jf.houspitalscaner.R;
 import com.jf.houspitalscaner.base.vm.BaseVM;
@@ -16,12 +18,12 @@ import com.jf.houspitalscaner.net.entity.IDInfor;
  * Created by admin on 2017/8/9.
  */
 
-public class CheckFragmentVM extends BaseVM {
+public class MainVM extends BaseVM {
 
     private Activity activity;
     private IDInfor idInfor;
 
-    public CheckFragmentVM(FragmentActivity activity) {
+    public MainVM(FragmentActivity activity) {
         this.activity = activity;
 
         idInfor = new IDInfor();
@@ -45,5 +47,13 @@ public class CheckFragmentVM extends BaseVM {
     public void setIdInfor(IDInfor idInfor) {
         this.idInfor = idInfor;
         notifyPropertyChanged(BR.idInfor);
+    }
+
+    public String getNowHospital() {
+        return MyShareDbHelper.getString(SPKeys.SPKEY_HOSPITAL,"还没有设置当前医院");
+    }
+
+    public void setHospital(String hospital){
+        MyShareDbHelper.putString(SPKeys.SPKEY_HOSPITAL,hospital);
     }
 }

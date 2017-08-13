@@ -16,4 +16,7 @@ public interface SPKeys {
     /**认证信息*/
     String SPKEY_VALIDATEINFO = "SPKEY_VALIDATEINFO";
 
+    /**医院信息*/
+    String SPKEY_HOSPITAL = "SPKEY_HOSPITAL";
+
 }
