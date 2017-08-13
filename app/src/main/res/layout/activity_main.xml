@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.jf.houspitalscaner.vm.CheckFragmentVM" />
+    </data>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:background="@mipmap/bg_person"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--身份证信息-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="165dp"
+                android:background="@mipmap/bg_idcard_real"
+                android:paddingBottom="@dimen/padding_l"
+                android:paddingLeft="@dimen/padding_l"
+                android:paddingRight="@dimen/padding_l"
+                android:paddingTop="@dimen/padding_l">
+
+                <!--姓名-->
+                <TextView
+                    android:id="@+id/txv_lable_name"
+                    style="@style/lab_title_blue"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/lable_name" />
+
+                <TextView
+                    style="@style/lab_value_black"
+                    android:layout_alignBaseline="@+id/txv_lable_name"
+                    android:layout_toEndOf="@+id/txv_lable_name"
+                    android:text="@{viewModel.idInfor.name}" />
+
+                <!--头像-->
+                <ImageView
+                    android:id="@+id/img_header"
+                    android:layout_width="80dp"
+                    android:layout_height="120dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/txv_lable_name"
+                    app:imageBitmap="@{viewModel.idInfor.bmps}"
+                    android:background="@drawable/bg_border_gray_5" />
+
+                <!--性别-->
+                <TextView
+                    android:id="@+id/txv_lable_sex"
+                    style="@style/lab_title_blue"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/txv_lable_name"
+                    android:layout_marginTop="@dimen/padding_l"
+                    android:text="@string/lable_sex" />
+
+                <TextView
+                    android:id="@+id/txv_sex"
+                    style="@style/lab_value_black"
+                    android:layout_alignBaseline="@+id/txv_lable_sex"
+                    android:layout_toEndOf="@+id/txv_lable_sex"
+                    android:text="@{viewModel.idInfor.sex}" />
+
+                <!--民族-->
+                <TextView
+                    android:id="@+id/txv_lable_nation"
+                    style="@style/lab_title_blue"
+                    android:layout_alignBaseline="@+id/txv_lable_sex"
+                    android:layout_marginLeft="40dp"
+                    android:layout_toRightOf="@+id/txv_sex"
+                    android:text="@string/lable_nation" />
+
+                <TextView
+                    android:id="@+id/txv_nation"
+                    style="@style/lab_value_black"
+                    android:layout_alignBaseline="@+id/txv_lable_nation"
+                    android:layout_toEndOf="@+id/txv_lable_nation"
+                    android:text="@{viewModel.idInfor.nation}" />
+
+                <!--出生-->
+                <TextView
+                    android:id="@+id/txv_lable_born"
+                    style="@style/lab_title_blue"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/txv_lable_sex"
+                    android:layout_marginTop="@dimen/padding_l"
+                    android:text="@string/lable_born" />
+
+                <TextView
+                    style="@style/lab_value_black"
+                    android:layout_alignBaseline="@+id/txv_lable_born"
+                    android:layout_toEndOf="@+id/txv_lable_born"
+                    android:text="@{@string/id_birthday_format(viewModel.idInfor.year,viewModel.idInfor.month,viewModel.idInfor.day)}" />
+
+                <!--住址-->
+                <LinearLayout
+                    android:id="@+id/lin_address"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/txv_lable_born"
+                    android:layout_marginRight="@dimen/padding_m"
+                    android:layout_marginTop="@dimen/padding_l"
+                    android:layout_toStartOf="@+id/img_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txv_lable_address"
+                        style="@style/lab_title_blue"
+                        android:text="@string/lable_address" />
+
+                    <TextView
+                        android:id="@+id/txv_address"
+                        style="@style/lab_value_black"
+                        android:text="@{viewModel.idInfor.address}" />
+
+                </LinearLayout>
+
+
+                <!--身份证-->
+                <TextView
+                    android:id="@+id/txv_lable_idnum"
+                    style="@style/lab_title_blue"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/lin_address"
+                    android:layout_marginTop="@dimen/padding_l"
+                    android:text="@string/lable_idnum" />
+
+                <TextView
+                    style="@style/lab_value_black"
+                    android:layout_alignBaseline="@+id/txv_lable_idnum"
+                    android:layout_toEndOf="@+id/txv_lable_idnum"
+                    android:text="@{viewModel.idInfor.num}" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/padding_l"
+                android:background="@mipmap/bg_trans_diver"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@mipmap/bg_trans_jinghui"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/padding_xxl"
+                    android:layout_alignParentRight="true"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/padding_l"
+                    android:paddingBottom="@dimen/padding_l"
+                    >
+
+                    <LinearLayout
+                        android:background="@color/translucent_5_black"
+                        style="@style/info_row">
+
+                        <TextView
+                            style="@style/lab_title_blue3"
+                            android:text="加油卡号："/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="CA00231"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/info_row">
+
+                        <TextView
+                            style="@style/lab_title_blue3"
+                            android:text="车辆类型："/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="摩托车"
+                            android:paddingRight="@dimen/padding_xl"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/info_row">
+
+                        <TextView
+                            style="@style/lab_title_blue3"
+                            android:text="车牌号："/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/padding_m"
+                            android:paddingRight="@dimen/padding_m"
+                            android:drawablePadding="@dimen/padding_s"
+                            android:text="川A123456"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/info_row">
+
+                        <TextView
+                            style="@style/lab_title_blue3"
+                            android:text="行驶证号："/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/padding_m"
+                            android:paddingRight="@dimen/padding_m"
+                            android:drawablePadding="@dimen/padding_s"
+                            android:text="51055668899545"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/padding_l"
+                android:background="@mipmap/bg_trans_diver"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">加油站认证系统</string>
+
+    <!-- Strings related to login -->
+    <string name="title_activity_login">登录</string>
+    <string name="title_login">请登录</string>
+    <string name="title_registe">注册</string>
+    <string name="prompt_nickname">请输入用户名</string>
+    <string name="prompt_password">请输入密码</string>
+    <string name="action_sign_in">登录</string>
+
+    <string name="tab_check_menue">实名验证</string>
+    <string name="tab_regiter_menue">加油登记</string>
+    <string name="tab_user_menue">用户</string>
+
+    <string name="action_sign_out">切换用户</string>
+    <string name="dailog_sign_out_tips">确定退出软件并切换用户？</string>
+
+    <string name="lable_name">姓名：</string>
+    <string name="lable_sex">性别：</string>
+    <string name="lable_nation">民族：</string>
+    <string name="lable_born">出生：</string>
+    <string name="lable_address">住址：</string>
+    <string name="lable_idnum">身份证号：</string>
+
+    <string name="lable_gasnumber">加油卡号</string>
+    <string name="lable_car_type">车辆类型</string>
+    <string name="lable_brand_type">车牌类型</string>
+    <string name="lable_brand_num">车牌号码</string>
+    <string name="lable_gas_type">油品种类</string>
+    <string name="lable_gas_amount">加油量</string>
+    <string name="lable_gas_unit">升</string>
+    <string name="lable_register_site">采集点：</string>
+    <string name="lable_oporator">操作员：</string>
+    <string name="btn_upload">点击上传</string>
+
+    <string name="id_birthday_format">%1$s年%2$s月%3$s日</string>
+
+</resources>
