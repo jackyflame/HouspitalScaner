@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">加油站认证系统</string>
+    <string name="app_name">医院认证系统</string>
 
     <!-- Strings related to login -->
     <string name="title_activity_login">登录</string>

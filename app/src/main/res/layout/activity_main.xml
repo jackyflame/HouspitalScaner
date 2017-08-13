@@ -19,12 +19,12 @@
             <!--身份证信息-->
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="165dp"
-                android:background="@mipmap/bg_idcard_real"
-                android:paddingBottom="@dimen/padding_l"
-                android:paddingLeft="@dimen/padding_l"
-                android:paddingRight="@dimen/padding_l"
-                android:paddingTop="@dimen/padding_l">
+                android:layout_height="wrap_content"
+                android:background="@mipmap/bg_idcard"
+                android:paddingBottom="@dimen/padding_xxl"
+                android:paddingLeft="@dimen/padding_xxl"
+                android:paddingRight="@dimen/padding_xxl"
+                android:paddingTop="@dimen/padding_xxl">
 
                 <!--姓名-->
                 <TextView
@@ -55,7 +55,7 @@
                     style="@style/lab_title_blue"
                     android:layout_alignParentLeft="true"
                     android:layout_below="@+id/txv_lable_name"
-                    android:layout_marginTop="@dimen/padding_l"
+                    android:layout_marginTop="@dimen/idcard_row_pading"
                     android:text="@string/lable_sex" />
 
                 <TextView
@@ -87,7 +87,7 @@
                     style="@style/lab_title_blue"
                     android:layout_alignParentLeft="true"
                     android:layout_below="@+id/txv_lable_sex"
-                    android:layout_marginTop="@dimen/padding_l"
+                    android:layout_marginTop="@dimen/idcard_row_pading"
                     android:text="@string/lable_born" />
 
                 <TextView
@@ -102,7 +102,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_below="@+id/txv_lable_born"
                     android:layout_marginRight="@dimen/padding_m"
-                    android:layout_marginTop="@dimen/padding_l"
+                    android:layout_marginTop="@dimen/idcard_row_pading"
                     android:layout_toStartOf="@+id/img_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -126,7 +126,7 @@
                     style="@style/lab_title_blue"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/lin_address"
-                    android:layout_marginTop="@dimen/padding_l"
+                    android:layout_marginTop="@dimen/idcard_row_pading"
                     android:text="@string/lable_idnum" />
 
                 <TextView
@@ -134,6 +134,13 @@
                     android:layout_alignBaseline="@+id/txv_lable_idnum"
                     android:layout_toEndOf="@+id/txv_lable_idnum"
                     android:text="@{viewModel.idInfor.num}" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/ic_check_unregiter" />
 
             </RelativeLayout>
 
@@ -159,20 +166,27 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:paddingTop="@dimen/padding_l"
-                    android:paddingBottom="@dimen/padding_l"
-                    >
+                    android:paddingBottom="@dimen/padding_l" >
 
                     <LinearLayout
                         android:background="@color/translucent_5_black"
+                        android:paddingTop="@dimen/padding_m"
+                        android:paddingBottom="@dimen/padding_m"
+                        android:layout_height="wrap_content"
                         style="@style/info_row">
 
                         <TextView
                             style="@style/lab_title_blue3"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/text_l"
                             android:text="加油卡号："/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/text_blue"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/text_l"
                             android:text="CA00231"/>
 
                     </LinearLayout>
@@ -202,8 +216,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="@dimen/padding_m"
-                            android:paddingRight="@dimen/padding_m"
                             android:drawablePadding="@dimen/padding_s"
                             android:text="川A123456"/>
 
@@ -219,8 +231,6 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="@dimen/padding_m"
-                            android:paddingRight="@dimen/padding_m"
                             android:drawablePadding="@dimen/padding_s"
                             android:text="51055668899545"/>
 
