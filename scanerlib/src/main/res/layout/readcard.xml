@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+    
+		    <RelativeLayout
+		        android:layout_width="350dip"
+		        android:layout_height="220dip"
+		        android:layout_marginTop="0dip"
+		        android:layout_gravity="center_horizontal"
+		        android:background="@drawable/idcard" >
+		        
+		        <LinearLayout
+		            android:layout_width="270dip"
+		            android:layout_height="match_parent"
+		            android:orientation="vertical" >
+		            
+		            <LinearLayout
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+		                android:layout_marginTop="5dip" >
+		
+		                <TextView
+		                    android:layout_width="40dip"
+		                    android:layout_height="wrap_content"
+		                    android:layout_marginLeft="10dip"
+		                    android:text="@string/name"
+		                    style="@style/CardInfoTitle" />
+		                
+		                <TextView
+		                    android:id="@+id/textViewName"
+		                    android:layout_width="0dip"
+		                    android:layout_height="wrap_content"
+		                    android:layout_weight="1.0"
+		                    style="@style/CardInfoText" />
+		                
+		            </LinearLayout>
+		            
+		            <LinearLayout
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+		                android:layout_marginTop="5dip" >
+		
+		                <TextView
+		                    android:layout_width="40dip"
+		                    android:layout_height="wrap_content"
+		                    android:layout_marginLeft="10dip"
+		                    android:text="@string/gender"
+		                    style="@style/CardInfoTitle" />
+		                
+		                <TextView
+		                    android:id="@+id/textViewGender"
+		                    android:layout_width="40dip"
+		                    android:layout_height="wrap_content"
+		                    style="@style/CardInfoText" />
+		                
+		                <TextView
+		                    android:layout_width="40dip"
+		                    android:layout_height="wrap_content"
+		                    android:layout_marginLeft="10dip"
+		                    android:text="@string/nation"
+		                    style="@style/CardInfoTitle" />
+		                
+		                <TextView
+		                    android:id="@+id/textViewNation"
+		                    android:layout_width="80dip"
+		                    android:layout_height="wrap_content"
+		                    style="@style/CardInfoText" />
+		                
+		            </LinearLayout>
+		            
+		            <LinearLayout
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+		                android:layout_marginTop="5dip" >
+		
+		                <TextView
+		                    android:layout_width="40dip"
+		                    android:layout_height="wrap_content"
+		                    android:layout_marginLeft="10dip"
+		                    android:text="@string/birthday"
+		                    style="@style/CardInfoTitle" />
+		                
+		                <TextView
+		                    android:id="@+id/textViewYear"
+		                    android:layout_width="35dip"
+		                    android:layout_height="wrap_content"
+		                    style="@style/CardInfoText" />
+		                
+		                <TextView
+		                    android:layout_width="20dip"
+		                    android:layout_height="wrap_content"
+		                    android:layout_marginLeft="2dip"
+		                    android:text="@string/year"
+		                    style="@style/CardInfoTitle" />
+		                
+		                <TextView
+		                    android:id="@+id/textViewMonth"
+		                    android:layout_width="20dip"
+		                    android:layout_height="wrap_content"
+		                    style="@style/CardInfoText" />
+		                
+		                <TextView
+		                    android:layout_width="20dip"
+		                    android:layout_height="wrap_content"
+		                    android:layout_marginLeft="2dip"
+		                    android:text="@string/month"
+		                    style="@style/CardInfoTitle" />
+		                
+		                <TextView
+		                    android:id="@+id/textViewDay"
+		                    android:layout_width="20dip"
+		                    android:layout_height="wrap_content"
+		                    style="@style/CardInfoText" />
+		                
+		                <TextView
+		                    android:layout_width="20dip"
+		                    android:layout_height="wrap_content"
+		                    android:layout_marginLeft="2dip"
+		                    android:text="@string/day"
+		                    style="@style/CardInfoTitle" />
+		                
+		            </LinearLayout>
+		            
+		            <LinearLayout
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+		                android:layout_marginTop="5dip" >
+		
+		                <TextView
+		                    android:layout_width="40dip"
+		                    android:layout_height="wrap_content"
+		                    android:layout_marginLeft="10dip"
+		                    android:text="@string/address"
+		                    style="@style/CardInfoTitle" />
+		                
+		                <TextView
+		                    android:id="@+id/textViewAddress"
+		                    android:layout_width="0dip"
+		                    android:layout_height="36dip"
+		                    android:layout_weight="1.0"
+		                    style="@style/CardInfoText" />
+		                
+		            </LinearLayout>
+		            
+		            <LinearLayout
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+		                android:layout_marginTop="5dip" >
+		
+		                <TextView
+		                    android:layout_width="60dip"
+		                    android:layout_height="wrap_content"
+		                    android:layout_marginLeft="10dip"
+		                    android:text="@string/idno"
+		                    style="@style/CardInfoTitle" />
+		                
+		                <TextView
+		                    android:id="@+id/textViewIDNo"
+		                    android:layout_width="0dip"
+		                    android:layout_height="20dip"
+		                    android:layout_weight="1.0"
+		                    style="@style/CardInfoText" />
+		                
+		            </LinearLayout>
+		            
+		            <LinearLayout
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+		                android:layout_marginTop="5dip" >
+		
+		                <TextView
+		                    android:layout_width="60dip"
+		                    android:layout_height="wrap_content"
+		                    android:layout_marginLeft="10dip"
+		                    android:text="@string/agency"
+		                    style="@style/CardInfoTitle" />
+		                
+		                <TextView
+		                    android:id="@+id/textViewAgency"
+		                    android:layout_width="0dip"
+		                    android:layout_height="20dip"
+		                    android:layout_weight="1.0"
+		                    style="@style/CardInfoText" />
+		                
+		            </LinearLayout>
+		            
+		            <LinearLayout
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+		                android:layout_marginTop="5dip" >
+		
+		                <TextView
+		                    android:layout_width="60dip"
+		                    android:layout_height="wrap_content"
+		                    android:layout_marginLeft="10dip"
+		                    android:text="@string/expire"
+		                    style="@style/CardInfoTitle" />
+		                
+		                <TextView
+		                    android:id="@+id/textViewExpire"
+		                    android:layout_width="0dip"
+		                    android:layout_height="20dip"
+		                    android:layout_weight="1.0"
+		                    style="@style/CardInfoText" />
+		                
+		            </LinearLayout>
+		            
+		        </LinearLayout>
+		            
+		        <ImageView
+		            android:id="@+id/imageViewPortrait"
+		            android:layout_width="68dip"
+		            android:layout_height="85dip"
+		            android:layout_marginTop="20dip"
+		            android:layout_marginRight="6dip"
+		            android:layout_alignParentTop="true"
+		            android:layout_alignParentRight="true"
+		            android:contentDescription="@null"
+		            android:src="@null" />
+		        
+		    </RelativeLayout>
+		    
+		    
+		    <LinearLayout
+		        android:id="@+id/status_bar"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="0dip"
+		        android:gravity="center"
+		        android:background="#c0c3c7" > 
+		        
+		        <TextView android:id="@+id/textViewStatus"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="@string/readcard_hint"
+		            style="@style/StatusLabel" />
+		        
+		    </LinearLayout>
+		    
+		    
+		    <LinearLayout
+		        android:id="@+id/readbean"
+		        android:layout_width="match_parent"
+		        android:layout_height="40dip"
+		        android:layout_marginTop="0dip"
+		        android:layout_gravity="center_horizontal">
+		        <Spinner
+		            android:id="@+id/spinnermode"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1"
+		            android:spinnerMode="dropdown" />
+		        
+		        <Spinner
+		            android:id="@+id/spinnertype"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1"
+		            android:spinnerMode="dropdown" />
+		        
+		    </LinearLayout>
+		
+		    
+		    <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="40dip" 
+		        android:layout_marginTop="0dip"
+		        android:gravity="center">
+		
+		        <Button
+		            android:id="@+id/buttonStart"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1"
+		            android:text="@string/start"
+		            android:textSize="16sp"/>
+		                
+		        <Button
+		            android:id="@+id/buttonPause"  
+		            android:layout_width="wrap_content"        
+		            android:layout_height="wrap_content" 
+		            android:layout_weight="1"         
+		            android:text="@string/pause"
+		            android:textSize="16sp" />
+		
+		        <Button
+		            android:id="@+id/buttonStop"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1"
+		            android:text="@string/stop" 
+		            android:textSize="16sp"/>
+		
+		    </LinearLayout>
+		
+		    
+		    <LinearLayout
+		        android:id="@+id/samid"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="0dip"
+				android:focusable="true"  
+				android:focusableInTouchMode="true">
+		
+		        <Button
+		            android:id="@+id/buttonSamId"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="@string/readsamid"
+		            android:textSize="16sp"/>
+		
+		       <EditText
+		            android:id="@+id/editTextSamId"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="5dip"
+		            android:hint="@string/samid"
+		            android:maxLines="2"
+		            android:textSize="15sp"
+		            android:enabled="false"/>
+		   
+		    </LinearLayout>
+		    
+		    
+		    <LinearLayout
+		        android:id="@+id/mcu_version"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="0dip"
+				android:focusable="true"  
+				android:focusableInTouchMode="true">
+		
+		        <Button
+		            android:id="@+id/buttonMcuVersion"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="@string/read_mcu_version"
+		            android:textSize="16sp"/>
+		
+		        <EditText
+		            android:id="@+id/editTextMcuVersion"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="5dip"
+		            android:ems="10"
+		            android:hint="@string/mcu_version"
+		            android:enabled="false"
+		            android:textSize="16sp"/>
+		
+		        
+		    </LinearLayout>
+		    
+		    <LinearLayout
+		        android:id="@+id/version"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="0dip"
+				android:focusable="true"  
+				android:focusableInTouchMode="true">
+		
+		        <Button
+		            android:id="@+id/buttonVersion"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="@string/readversion"
+		            android:textSize="16sp"/>
+		
+		        <EditText
+		            android:id="@+id/editTextVersion"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="5dip"
+		            android:ems="10"
+		            android:hint="@string/version"
+		            android:textSize="16sp"
+		            android:enabled="false"/>
+		        
+		    </LinearLayout>
+		    
+		    <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+				android:focusable="true"  
+				android:focusableInTouchMode="true">
+		    
+			   <Button
+			            android:id="@+id/buttonIMEI"
+			            android:layout_width="wrap_content"
+			            android:layout_height="40dip"	          
+			            android:text="@string/IMEI"
+			            android:textSize="16sp"/>
+			
+			   <EditText
+			            android:id="@+id/editTextIMEI"
+			            android:layout_width="210dip"
+			            android:layout_height="wrap_content"
+			            android:layout_marginLeft="5dip"
+			            android:hint="@string/IMEI"
+			            android:enabled="false"
+			            android:textSize="16sp"/>
+			   	
+		   </LinearLayout>
+		    
+		    <LinearLayout
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+				android:focusable="true"  
+				android:focusableInTouchMode="true">
+		    
+			   <Button
+			            android:id="@+id/buttonMEID"
+			            android:layout_width="wrap_content"
+			          	android:layout_height="40dip"	    
+			            android:text="@string/MEID"
+			            android:textSize="16sp"/>
+			
+			   <EditText
+			            android:id="@+id/editTextMEID"
+			            android:layout_width="210dip"
+			            android:layout_height="wrap_content"
+			            android:layout_marginLeft="5dip"
+			            android:hint="@string/MEID"
+			            android:enabled="false"
+			            android:textSize="16sp"/>
+			   
+			   <Button
+		            android:id="@+id/buttonToNewActivity"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="@string/gotonext"
+		            android:textSize="16sp"/>
+			   	
+		   </LinearLayout>
+    
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

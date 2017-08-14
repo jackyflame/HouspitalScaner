@@ -249,6 +249,16 @@
 
         </LinearLayout>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_xxl"
+            android:text="扫描"
+            android:textSize="@dimen/text_l"
+            android:textColor="@color/white"
+            android:onClick="@{viewModel.onScanClick}"
+            android:background="@drawable/bg_corner_blue_5"/>
+
     </LinearLayout>
 
 </layout>

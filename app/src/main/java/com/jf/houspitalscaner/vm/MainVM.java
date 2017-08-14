@@ -1,10 +1,12 @@
 package com.jf.houspitalscaner.vm;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.databinding.Bindable;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
 
 import com.haozi.baselibrary.constants.SPKeys;
 import com.haozi.baselibrary.db.MyShareDbHelper;
@@ -12,6 +14,7 @@ import com.jf.houspitalscaner.BR;
 import com.jf.houspitalscaner.R;
 import com.jf.houspitalscaner.base.vm.BaseVM;
 import com.jf.houspitalscaner.net.entity.IDInfor;
+import com.jf.scanerlib.ClientReadCardActivity;
 
 
 /**
@@ -55,5 +58,10 @@ public class MainVM extends BaseVM {
 
     public void setHospital(String hospital){
         MyShareDbHelper.putString(SPKeys.SPKEY_HOSPITAL,hospital);
+    }
+
+    public void onScanClick(View view){
+        Intent intent = new Intent(activity,ClientReadCardActivity.class);
+        activity.startActivity(intent);
     }
 }

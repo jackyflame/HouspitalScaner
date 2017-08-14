@@ -1,3 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">scanerLib</string>
+
+    <string name="app_name">iDR读卡客户程序</string>
+    <string name="action_settings">Settings</string>
+    <string name="read_card">读卡</string>
+    <string name="auto">自动读卡TypeA/TypeB</string>
+    <string name="typeA">自动读卡TypeA</string>
+    <string name="typeB">自动读卡TypeB</string>
+    <string name="online">联机读卡</string>
+    <string name="name">姓名</string>
+    <string name="gender">性别</string>
+    <string name="nation">民族</string>
+    <string name="birthday">出生</string>
+    <string name="year">年</string>
+    <string name="month">月</string>
+    <string name="day">日</string>
+    <string name="address">地址</string>
+	<string name="idno">身份证号</string>
+	<string name="agency">签发机关</string>
+	<string name="expire">有效期</string>
+	<string name="readcard_hint">请放卡</string> 
+	<string name="pause">暂停</string>
+	<string name="stop">停止</string>
+	<string name="start">启动</string>
+	<string name="readsamid">安全模块号</string>
+	<string name="read_mcu_version">单片机版本</string>
+	<string name="readversion">服务版本</string>
+	<string name="samid">安全模块号</string>
+	<string name="mcu_version">单片机版本</string>
+	<string name="version">服务版本</string>
+	<string name="back">返回</string>
+	<string name="gotonext">下一页</string>
+	<string name="SIM_number">sim序列号</string>
+    <string name="IMEI">IMEI</string>
+    <string name="MEID">MEID</string>
+    <string name="card_no">身份证号</string>
 </resources>

@@ -1,2 +1,14 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.jf.scanerlib" />
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jf.scanerlib" >
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application>
+        <activity android:name=".ClientReadCardActivity" />
+        <activity android:name=".NewActivity" />
+    </application>
+
+</manifest>

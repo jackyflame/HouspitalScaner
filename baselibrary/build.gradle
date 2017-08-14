@@ -51,4 +51,5 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC1'
     //compile project(':greendaolib')
     //compile project(':scanerlib')
+    compile project(':scanerlib')
 }

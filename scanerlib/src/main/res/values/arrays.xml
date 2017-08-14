@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="read_type">
+        <item>B卡</item>
+        <item>A卡/B卡</item>
+        <item>A卡</item>      
+    </string-array>
+    
+    
+    <string-array name="read_mode">
+        <item>自动读卡</item> 
+        <item>联机读卡</item>
+        <item>串口人证比对</item> 
+    </string-array>
+</resources>

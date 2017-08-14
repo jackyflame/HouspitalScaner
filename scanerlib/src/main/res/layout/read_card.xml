@@ -1,0 +1,267 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="350dip"
+        android:layout_height="220dip"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dip"
+        android:background="@drawable/idcard" >
+
+        <LinearLayout
+            android:layout_width="270dip"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dip" >
+
+                <TextView
+                    style="@style/CardInfoTitle"
+                    android:layout_width="40dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:text="@string/name" />
+
+                <TextView
+                    android:id="@+id/textViewName"
+                    style="@style/CardInfoText"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dip" >
+
+                <TextView
+                    style="@style/CardInfoTitle"
+                    android:layout_width="40dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:text="@string/gender" />
+
+                <TextView
+                    android:id="@+id/textViewGender"
+                    style="@style/CardInfoText"
+                    android:layout_width="40dip"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    style="@style/CardInfoTitle"
+                    android:layout_width="40dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:text="@string/nation" />
+
+                <TextView
+                    android:id="@+id/textViewNation"
+                    style="@style/CardInfoText"
+                    android:layout_width="80dip"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dip" >
+
+                <TextView
+                    style="@style/CardInfoTitle"
+                    android:layout_width="40dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:text="@string/birthday" />
+
+                <TextView
+                    android:id="@+id/textViewYear"
+                    style="@style/CardInfoText"
+                    android:layout_width="35dip"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    style="@style/CardInfoTitle"
+                    android:layout_width="20dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dip"
+                    android:text="@string/year" />
+
+                <TextView
+                    android:id="@+id/textViewMonth"
+                    style="@style/CardInfoText"
+                    android:layout_width="20dip"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    style="@style/CardInfoTitle"
+                    android:layout_width="20dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dip"
+                    android:text="@string/month" />
+
+                <TextView
+                    android:id="@+id/textViewDay"
+                    style="@style/CardInfoText"
+                    android:layout_width="20dip"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    style="@style/CardInfoTitle"
+                    android:layout_width="20dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dip"
+                    android:text="@string/day" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dip" >
+
+                <TextView
+                    style="@style/CardInfoTitle"
+                    android:layout_width="40dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:text="@string/address" />
+
+                <TextView
+                    android:id="@+id/textViewAddress"
+                    style="@style/CardInfoText"
+                    android:layout_width="0dip"
+                    android:layout_height="36dip"
+                    android:layout_weight="1.0" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dip" >
+
+                <TextView
+                    style="@style/CardInfoTitle"
+                    android:layout_width="60dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:text="@string/idno" />
+
+                <TextView
+                    android:id="@+id/textViewIDNo"
+                    style="@style/CardInfoText"
+                    android:layout_width="0dip"
+                    android:layout_height="20dip"
+                    android:layout_weight="1.0" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dip" >
+
+                <TextView
+                    style="@style/CardInfoTitle"
+                    android:layout_width="60dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:text="@string/agency" />
+
+                <TextView
+                    android:id="@+id/textViewAgency"
+                    style="@style/CardInfoText"
+                    android:layout_width="0dip"
+                    android:layout_height="20dip"
+                    android:layout_weight="1.0" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dip" >
+
+                <TextView
+                    style="@style/CardInfoTitle"
+                    android:layout_width="60dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:text="@string/expire" />
+
+                <TextView
+                    android:id="@+id/textViewExpire"
+                    style="@style/CardInfoText"
+                    android:layout_width="0dip"
+                    android:layout_height="20dip"
+                    android:layout_weight="1.0" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageViewPortrait"
+            android:layout_width="68dip"
+            android:layout_height="85dip"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="6dip"
+            android:layout_marginTop="20dip"
+            android:contentDescription="@null"
+            android:src="@null" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dip" >
+
+        <TextView
+            style="@style/CardInfoTitle"
+            android:layout_width="90dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:text="@string/card_no" />
+
+        <TextView
+            android:id="@+id/textViewCardNo"
+            style="@style/CardInfoText"
+            android:layout_width="0dip"
+            android:layout_height="20dip"
+            android:layout_weight="1.0" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/status_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="20dip"
+        android:layout_marginTop="20dip"
+        android:background="#c0c3c7"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/textViewStatus"
+            style="@style/StatusLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/readcard_hint" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:orientation="vertical">
+              
+        <Button
+	        android:id="@+id/buttonBack"
+	        android:layout_width="115dip"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center"
+	        android:layout_marginTop="90dip"
+	        android:text="返回" />
+    </LinearLayout>
+
+</LinearLayout>
