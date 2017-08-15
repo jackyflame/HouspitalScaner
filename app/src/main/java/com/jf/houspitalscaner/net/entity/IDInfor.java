@@ -3,6 +3,7 @@ package com.jf.houspitalscaner.net.entity;
 import android.graphics.Bitmap;
 
 import com.haozi.baselibrary.net.entity.BaseNetEntity;
+import com.routon.idr.idrinterface.readcard.BCardInfo;
 
 /**
  * Created by Haozi on 2017/8/13.
@@ -14,13 +15,26 @@ public class IDInfor extends BaseNetEntity {
     private String name;
     private String sex;
     private String nation;//民族
-    private String year;
-    private String month;
-    private String day;
+    private String birthday;
     private String address;
     private String num;
     private String headerImg;
     private Bitmap bmps;
+
+    public IDInfor() {
+        super();
+    }
+
+    public IDInfor(BCardInfo idInfor) {
+        setName(idInfor.name);
+        setSex(idInfor.gender);
+        setNation(idInfor.nation);
+        setBirthday(idInfor.birthday);
+        setAddress(idInfor.address);
+        setNum(idInfor.id);
+        setHeaderImg(idInfor.photo_path);
+        setBmps(idInfor.photo);
+    }
 
     public String getName() {
         return name;
@@ -46,28 +60,12 @@ public class IDInfor extends BaseNetEntity {
         this.nation = nation;
     }
 
-    public String getYear() {
-        return year;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public void setYear(String year) {
-        this.year = year;
-    }
-
-    public String getMonth() {
-        return month;
-    }
-
-    public void setMonth(String month) {
-        this.month = month;
-    }
-
-    public String getDay() {
-        return day;
-    }
-
-    public void setDay(String day) {
-        this.day = day;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
     public String getAddress() {

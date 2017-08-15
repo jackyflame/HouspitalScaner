@@ -38,7 +38,7 @@
                 <TextView
                     style="@style/lab_value_black"
                     android:layout_alignBaseline="@+id/txv_lable_name"
-                    android:layout_toEndOf="@+id/txv_lable_name"
+                    android:layout_toRightOf="@+id/txv_lable_name"
                     android:text="@{viewModel.idInfor.name}" />
 
                 <!--头像-->
@@ -64,7 +64,7 @@
                     android:id="@+id/txv_sex"
                     style="@style/lab_value_black"
                     android:layout_alignBaseline="@+id/txv_lable_sex"
-                    android:layout_toEndOf="@+id/txv_lable_sex"
+                    android:layout_toRightOf="@+id/txv_lable_sex"
                     android:text="@{viewModel.idInfor.sex}" />
 
                 <!--民族-->
@@ -80,7 +80,7 @@
                     android:id="@+id/txv_nation"
                     style="@style/lab_value_black"
                     android:layout_alignBaseline="@+id/txv_lable_nation"
-                    android:layout_toEndOf="@+id/txv_lable_nation"
+                    android:layout_toRightOf="@+id/txv_lable_nation"
                     android:text="@{viewModel.idInfor.nation}" />
 
                 <!--出生-->
@@ -95,8 +95,8 @@
                 <TextView
                     style="@style/lab_value_black"
                     android:layout_alignBaseline="@+id/txv_lable_born"
-                    android:layout_toEndOf="@+id/txv_lable_born"
-                    android:text="@{@string/id_birthday_format(viewModel.idInfor.year,viewModel.idInfor.month,viewModel.idInfor.day)}" />
+                    android:layout_toRightOf="@+id/txv_lable_born"
+                    android:text="@{viewModel.idInfor.birthday}" />
 
                 <!--住址-->
                 <LinearLayout
@@ -105,7 +105,7 @@
                     android:layout_below="@+id/txv_lable_born"
                     android:layout_marginRight="@dimen/padding_m"
                     android:layout_marginTop="@dimen/idcard_row_pading"
-                    android:layout_toStartOf="@+id/img_header"
+                    android:layout_toLeftOf="@+id/img_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
@@ -126,7 +126,7 @@
                 <TextView
                     android:id="@+id/txv_lable_idnum"
                     style="@style/lab_title_blue"
-                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_below="@+id/lin_address"
                     android:layout_marginTop="@dimen/idcard_row_pading"
                     android:text="@string/lable_idnum" />
@@ -134,7 +134,7 @@
                 <TextView
                     style="@style/lab_value_black"
                     android:layout_alignBaseline="@+id/txv_lable_idnum"
-                    android:layout_toEndOf="@+id/txv_lable_idnum"
+                    android:layout_toRightOf="@+id/txv_lable_idnum"
                     android:text="@{viewModel.idInfor.num}" />
 
                 <ImageView
@@ -253,11 +253,55 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/padding_xxl"
+            android:visibility="gone"
             android:text="扫描"
             android:textSize="@dimen/text_l"
             android:textColor="@color/white"
             android:onClick="@{viewModel.onScanClick}"
-            android:background="@drawable/bg_corner_blue_5"/>
+            android:background="@drawable/bg_corner_blue_gray_5_selector"/>
+
+        <LinearLayout
+            android:layout_margin="@dimen/padding_xxl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/mButtonStart"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="启动"
+                android:textSize="@dimen/text_l"
+                android:textColor="@color/white"
+                android:onClick="onClick"
+                android:background="@drawable/bg_corner_blue_gray_5_selector"/>
+
+            <Button
+                android:id="@+id/mButtonPause"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/padding_l"
+                android:text="暂停"
+                android:textSize="@dimen/text_l"
+                android:textColor="@color/white"
+                android:onClick="onClick"
+                android:background="@drawable/bg_corner_blue_gray_5_selector"/>
+
+            <Button
+                android:id="@+id/mButtonStop"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="@dimen/padding_l"
+                android:text="停止"
+                android:textSize="@dimen/text_l"
+                android:textColor="@color/white"
+                android:onClick="onClick"
+                android:background="@drawable/bg_corner_blue_gray_5_selector"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

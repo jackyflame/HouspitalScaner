@@ -15,6 +15,7 @@ import com.jf.houspitalscaner.R;
 import com.jf.houspitalscaner.base.vm.BaseVM;
 import com.jf.houspitalscaner.net.entity.IDInfor;
 import com.jf.scanerlib.ClientReadCardActivity;
+import com.routon.idr.idrinterface.readcard.BCardInfo;
 
 
 /**
@@ -35,9 +36,7 @@ public class MainVM extends BaseVM {
         idInfor.setSex("男");
         idInfor.setNation("汉族");
         idInfor.setAddress("四川省成都市成华区将军路223号");
-        idInfor.setYear("1988");
-        idInfor.setMonth("05");
-        idInfor.setDay("05");
+        idInfor.setBirthday("1988年8月12号");
         Bitmap bmp= BitmapFactory.decodeResource(activity.getResources(), R.mipmap.ic_launcher);
         idInfor.setBmps(bmp);
     }
@@ -47,8 +46,8 @@ public class MainVM extends BaseVM {
         return idInfor;
     }
 
-    public void setIdInfor(IDInfor idInfor) {
-        this.idInfor = idInfor;
+    public void setIdInfor(BCardInfo idInfor) {
+        this.idInfor = new IDInfor(idInfor);
         notifyPropertyChanged(BR.idInfor);
     }
 

@@ -59,16 +59,14 @@ import java.io.UnsupportedEncodingException;
 public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
         extends BaseDBActivity<X, T> implements OnClickListener, OnItemSelectedListener {
 
-    private Button mButtonPause;
-    private Button mButtonStop;
-    private Button mButtonStart;
+    protected Button mButtonPause;
+    protected Button mButtonStop;
+    protected Button mButtonStart;
 
     private final String TAG = "BaseReadCardActivity";
     private String mTextStatus;
-    private BCardInfo mBCardInfo;
+    protected BCardInfo mBCardInfo;
     private String cardANo;
-    private ArrayAdapter spinnerModeAdapter;
-    private ArrayAdapter spinnerTypeAdapter;
 
 
     private ReadState mClientState = ReadState.st_unknown;
@@ -539,7 +537,7 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
             case MainMsg.EVT_LEAVE_A: {
                 mTextStatus = "TypeA卡已离开";
                 updateTextStatus(mTextStatus);
-                updateTextCardInfo(false, ReadType.A);
+                //updateTextCardInfo(false, ReadType.A);
             }
             break;
             case MainMsg.EVT_READ_CARD_A_FAIL: {
@@ -586,7 +584,7 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
             case MainMsg.EVT_LEAVE_B: {
                 mTextStatus = "TypeB卡已离开";
                 updateTextStatus(mTextStatus);
-                updateTextCardInfo(false, ReadType.B);
+                //updateTextCardInfo(false, ReadType.B);
             }
             break;
             case MainMsg.EVT_READ_CARD_B_FAIL: {
@@ -649,7 +647,7 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
                 break;
             case MainMsg.EVT_PAUSED: {
                 mTextStatus = "已暂停读卡";
-                updateTextCardInfo(false, ReadType.B);
+                //updateTextCardInfo(false, ReadType.B);
                 updateTextStatus(mTextStatus);
                 mButtonPause.setEnabled(false);
                 mButtonStop.setEnabled(true);
@@ -673,7 +671,7 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
                 break;
             case MainMsg.EVT_STOPPED: {
                 mTextStatus = "已停止读卡";
-                updateTextCardInfo(false, ReadType.B);
+                //updateTextCardInfo(false, ReadType.B);
                 updateTextStatus(mTextStatus);
                 mButtonPause.setEnabled(false);
                 mButtonStop.setEnabled(false);
@@ -1033,37 +1031,7 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
     }
 
     public void updateTextCardInfo(boolean flag, ReadType rdType) {
-        if (flag) {
-            if (rdType == ReadType.B) {
-                //mTextViewName.setText(mBCardInfo.name);
-                //mTextViewGender.setText(mBCardInfo.gender);
-                //mTextViewNation.setText(mBCardInfo.nation);
-                //mTextViewYear.setText(mBCardInfo.birthday.substring(0, 4));
-                //mTextViewMonth.setText(mBCardInfo.birthday.substring(4, 6));
-                //mTextViewDay.setText(mBCardInfo.birthday.substring(6, 8));
-                //mTextViewAddress.setText(mBCardInfo.address);
-                //mTextViewIDNo.setText(mBCardInfo.id);
-                //mTextViewAgency.setText(mBCardInfo.agency);
-                //mTextViewExpire.setText(mBCardInfo.expireStart + " - " + mBCardInfo.expireEnd);
-                //mImageViewPortrait.setImageBitmap(mBCardInfo.photo);
-            } else {
-                //mTextViewIDNo.setText(cardANo);
-                //lihuili add 20170515 for heying
-                //write_cardsn_ToFile(cardANo);
-            }
-        } else {
-            //mTextViewName.setText("");
-            //mTextViewGender.setText("");
-            //mTextViewNation.setText("");
-            //mTextViewYear.setText("");
-            //mTextViewMonth.setText("");
-            //mTextViewDay.setText("");
-            //mTextViewAddress.setText("");
-            //mTextViewIDNo.setText("");
-            //mTextViewAgency.setText("");
-            //mTextViewExpire.setText("");
-            //mImageViewPortrait.setImageBitmap(null);
-        }
+
     }
 
     private void register() {
@@ -1096,11 +1064,6 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
 
-        TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-        Log.d(TAG, "Build.SERIAL is " + Build.SERIAL);
-        //Log.d(TAG, "getSimSerialNumber is " + tm.getSimSerialNumber());
-        //Log.d(TAG, "getDeviceId is " + tm.getDeviceId());
-
         register();
 
         Log.d(TAG, "try to open LogWriter");
@@ -1114,16 +1077,25 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
             pi = pm.getPackageInfo(getPackageName(), 0);
             majorVer = pi.versionName;
         } catch (NameNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         iDRVersion version = new iDRVersion();
         setTitle(getResources().getString(com.jf.scanerlib.R.string.app_name) + "V" + majorVer + "(" + version.getSvnRevision() + ")");
-
-
         soundPlayer = new ReadCardSound(this);
-        //初始化界面
-        setContentView(com.jf.scanerlib.R.layout.readcard);
+        //绑定读卡服务
+        bindReadCardService();
+        mTextStatus = "正在初始化";
+        mBCardInfo = new BCardInfo();
+        setClientState(ReadState.st_init);
+        UpdateSystemThread updateThread = new UpdateSystemThread(this);
+        updateThread.start();
+
+        initView();
+    }
+
+    protected void initView(){
+        ////初始化界面
+        //setContentView(com.jf.scanerlib.R.layout.readcard);
 
         ////默认读卡模式为自动
         //mSpinnerMode.setSelection(ReadMode.AUTO.getValue());
@@ -1133,17 +1105,6 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
         mButtonPause.setEnabled(false);
         mButtonStop.setEnabled(false);
         mButtonStart.setEnabled(false);
-
-        //绑定读卡服务
-        bindReadCardService();
-        mTextStatus = "正在初始化";
-
-        mBCardInfo = new BCardInfo();
-
-        setClientState(ReadState.st_init);
-        
-        UpdateSystemThread updateThread = new UpdateSystemThread(this);
-        updateThread.start();
     }
 
     @Override
@@ -1221,29 +1182,11 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
             send_msg.what = MainMsg.EVT_STOP;
         } else if (arg0 == mButtonStart) {
             ReaderBean rdrBean = new ReaderBean();
-            //if (mSpinnerMode != null) {
-            //    rdrBean.setReadMode(ReadMode.valueOf(mSpinnerMode.getSelectedItemPosition()));
-            //}
-            //if (mSpinnerType != null) {
-            //    rdrBean.setReadType(ReadType.valueOf(mSpinnerType.getSelectedItemPosition()));
-            //}
+            rdrBean.setReadMode(ReadMode.AUTO);
+            rdrBean.setReadType(ReadType.A_AND_B);
             send_msg.what = MainMsg.EVT_START;
             send_msg.obj = rdrBean;
         }
-//        else if (arg0 == mButtonReadSam) {
-//            send_msg.what = MainMsg.EVT_GET_SAMID;
-//        } else if (arg0 == mButtonReadMcuVersion) {
-//            send_msg.what = MainMsg.EVT_GET_MCU_VERSION;
-//        } else if (arg0 == mButtonReadVersion) {
-//            send_msg.what = MainMsg.EVT_GET_VERSION;
-//        } else if (arg0 == mButtonNext) {
-//            send_msg.what = MainMsg.EVT_ACTIVITY_TO_BACKGROUND;
-//        } else if (arg0 == buttonImei) {
-//            editTextImei.setText(getIMEIStr());
-//
-//        } else if (arg0 == buttonMeid) {
-//            editTextMeid.setText(getMEIDStr());
-//        }
 
         if (mHandler != null) {
             mHandler.sendMessage(send_msg);

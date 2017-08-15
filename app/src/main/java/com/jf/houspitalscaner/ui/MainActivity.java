@@ -1,8 +1,8 @@
 package com.jf.houspitalscaner.ui;
 
 import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -10,17 +10,21 @@ import android.widget.EditText;
 import com.haozi.baselibrary.utils.StringUtil;
 import com.haozi.baselibrary.utils.ViewUtils;
 import com.jf.houspitalscaner.R;
-import com.jf.houspitalscaner.base.BaseDBActivity;
 import com.jf.houspitalscaner.databinding.ActivityMainBinding;
 import com.jf.houspitalscaner.vm.MainVM;
+import com.routon.idr.idrinterface.readcard.ReadType;
 
-public class MainActivity extends BaseDBActivity<ActivityMainBinding,MainVM> {
+public class MainActivity extends BaseReadCardActivity<ActivityMainBinding,MainVM> {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initView() {
         //绑定布局值
         bindLayout(R.layout.activity_main,new MainVM(this));
+        mButtonPause = findViewById(R.id.mButtonPause);
+        mButtonStop = findViewById(R.id.mButtonStop);
+        mButtonStart = findViewById(R.id.mButtonStart);
+        //初始化按钮
+        super.initView();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -72,5 +76,9 @@ public class MainActivity extends BaseDBActivity<ActivityMainBinding,MainVM> {
                 .setNegativeButton("取消",null)
                 .create()
                 .show();
+    }
+
+    public void updateTextCardInfo(boolean flag, ReadType rdType){
+        viewModel.setIdInfor(mBCardInfo);
     }
 }
