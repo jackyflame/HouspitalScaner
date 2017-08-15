@@ -66,9 +66,6 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM> e
     private String mTextStatus;
     private BCardInfo mBCardInfo;
     private String cardANo;
-    private ArrayAdapter spinnerModeAdapter;
-    private ArrayAdapter spinnerTypeAdapter;
-
 
     private ReadState mClientState = ReadState.st_unknown;
     private static final int ROLL_INTERVAL = 20;  //滚动执行间隔时间 20ms
