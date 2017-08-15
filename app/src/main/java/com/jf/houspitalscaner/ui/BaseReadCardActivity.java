@@ -346,6 +346,7 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM> e
                             case st_cardon_a:
                             case st_cardon_b: {
                                 //启动成功
+
                                 //启动查状态定时器
                                 startRollingTimer(ROLL_INTERVAL, true);
 
@@ -360,12 +361,6 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM> e
 
                                 //启动查状态定时器
                                 startRollingTimer(ROLL_INTERVAL, true);
-
-                                //留在st_idle状态
-
-                                //lihuili 2016-01-14 st_fault是多余, 程序不会调用procOnFault
-                                //状态跳转到st_fault
-                                //setClientState(ReadState.st_fault);
                             }
                             break;
                             case st_init: {
@@ -381,14 +376,11 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM> e
                             default: {
                                 //启动查状态定时器
                                 startRollingTimer(ROLL_INTERVAL, true);
-
-                                //留在st_idle状态
                             }
                             break;
                         }
                         m_lastServRdSt = servRdSt;
                     } catch (RemoteException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                 }
@@ -396,6 +388,7 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM> e
             break;
             case MainMsg.EVT_STARTED: {
                 //启动成功
+
                 //停定时器
                 startRollingTimer(ROLL_INTERVAL, false);
 
@@ -482,21 +475,14 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM> e
                                 mTextStatus = "设备故障";
                                 updateTextCardInfo(false, ReadType.B);
                                 updateTextStatus(mTextStatus);
-
                                 startRollingTimer(ROLL_INTERVAL, true);
-
-                                //lihuili 2016-01-14 无需跳转到st_fault状态，仅需要提示
-//							 //状态跳转到st_fault
-//							 setClientState(ReadState.st_fault);
                             }
                             break;
                             default:
                                 break;
                         }
-
                         m_lastServRdSt = servRdSt;
                     } catch (RemoteException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                 }
@@ -697,7 +683,7 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM> e
             case MainMsg.EVT_START: {
                 //接收到启动读卡请求
                 mTextStatus = "正在启动读卡...";
-
+                showProgressDialog(false,mTextStatus);
                 mRdrBean = (ReaderBean) msg.obj;
                 if ((mReadCardService != null) && (mRdrBean != null)) {
                     //先发送启动读卡请求,然后等待事件EVT_STARTED 或者 查状态定时器到事件EVT_TIMEOUT_ROLL
@@ -713,6 +699,7 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM> e
             break;
             case MainMsg.EVT_STARTED: {
                 //启动成功
+                hideProgressDialog();
                 //停定时器
                 startRollingTimer(ROLL_INTERVAL, false);
 
@@ -747,7 +734,6 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM> e
                                 }
                                 //重启启动查询状态定时器
                                 startRollingTimer(ROLL_INTERVAL, true);
-
                                 //状态跳转到st_work
                                 setClientState(ReadState.st_work);
                             }
@@ -755,26 +741,19 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM> e
                             case st_cardon_a:
                             case st_cardon_b: {
                                 //启动成功
-
                                 //启动查状态定时器
                                 startRollingTimer(ROLL_INTERVAL, true);
-
                                 //状态跳转到st_work
                                 setClientState(ReadState.st_work);
                             }
                             break;
                             case st_fault: {
                                 startRollingTimer(ROLL_INTERVAL, true);
-
-                                //lihuili 2016-01-14 无需跳转到st_fault状态，仅需要提示
-//							 //状态跳转到st_fault
-//							 setClientState(ReadState.st_fault);
                             }
                             break;
                             case st_init: {
                                 mTextStatus = "正在启动读卡...";
                                 updateTextStatus(mTextStatus);
-
                                 //启动查状态定时器
                                 startRollingTimer(ROLL_INTERVAL, true);
                             }
@@ -832,7 +811,6 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM> e
         }
         return 0;
     }
-
 
     //lihuili 2016-01-14 st_fault是多余, 程序不会调用procOnFault
     private int procOnFault(Message msg) {
@@ -956,7 +934,6 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM> e
     }
 
     private int startRollingTimer(int timeout, boolean enable) {
-        //Log.d(TAG, "startHeartbeatTimer "+ enable);
         if (mHandler != null) {
             if (enable) {
                 mHandler.removeMessages(MainMsg.EVT_TIMEOUT_ROLL);
@@ -1212,30 +1189,9 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM> e
             send_msg.what = MainMsg.EVT_STOP;
         } else if (arg0 == mButtonStart) {
             ReaderBean rdrBean = new ReaderBean();
-            //if (mSpinnerMode != null) {
-            //    rdrBean.setReadMode(ReadMode.valueOf(mSpinnerMode.getSelectedItemPosition()));
-            //}
-            //if (mSpinnerType != null) {
-            //    rdrBean.setReadType(ReadType.valueOf(mSpinnerType.getSelectedItemPosition()));
-            //}
             send_msg.what = MainMsg.EVT_START;
             send_msg.obj = rdrBean;
         }
-//        else if (arg0 == mButtonReadSam) {
-//            send_msg.what = MainMsg.EVT_GET_SAMID;
-//        } else if (arg0 == mButtonReadMcuVersion) {
-//            send_msg.what = MainMsg.EVT_GET_MCU_VERSION;
-//        } else if (arg0 == mButtonReadVersion) {
-//            send_msg.what = MainMsg.EVT_GET_VERSION;
-//        } else if (arg0 == mButtonNext) {
-//            send_msg.what = MainMsg.EVT_ACTIVITY_TO_BACKGROUND;
-//        } else if (arg0 == buttonImei) {
-//            editTextImei.setText(getIMEIStr());
-//
-//        } else if (arg0 == buttonMeid) {
-//            editTextMeid.setText(getMEIDStr());
-//        }
-
         if (mHandler != null) {
             mHandler.sendMessage(send_msg);
         }
@@ -1303,19 +1259,6 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM> e
             }
             //end---------------------------------------------------------------------
         }
-    }
-
-    private boolean IsVolumeOk(String path) {
-        boolean ret = false;
-        long totalBlocks = 0;
-        if (path != null) {
-            StatFs statFs = new StatFs(path);
-            totalBlocks = statFs.getBlockCount();
-            if (totalBlocks > 0) {
-                ret = true;
-            }
-        }
-        return ret;
     }
 
 }
