@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/HouspitalScaner.iml" filepath="$PROJECT_DIR$/HouspitalScaner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/HouspitalScaner.iml" filepath="$PROJECT_DIR$/.idea/HouspitalScaner.iml" />
+      <module fileurl="file://D:\Deverloper\Android\HouspitalScaner\HouspitalScaner.iml" filepath="D:\Deverloper\Android\HouspitalScaner\HouspitalScaner.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\Deverloper\Android\HouspitalScaner\app\app.iml" filepath="D:\Deverloper\Android\HouspitalScaner\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/baselibrary/baselibrary.iml" filepath="$PROJECT_DIR$/baselibrary/baselibrary.iml" />
+      <module fileurl="file://D:\Deverloper\Android\HouspitalScaner\baselibrary\baselibrary.iml" filepath="D:\Deverloper\Android\HouspitalScaner\baselibrary\baselibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/scanerlib/scanerlib.iml" filepath="$PROJECT_DIR$/scanerlib/scanerlib.iml" />
+      <module fileurl="file://D:\Deverloper\Android\HouspitalScaner\scanerlib\scanerlib.iml" filepath="D:\Deverloper\Android\HouspitalScaner\scanerlib\scanerlib.iml" />
     </modules>
   </component>
 </project>
