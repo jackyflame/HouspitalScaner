@@ -1064,7 +1064,6 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM> e
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
         Log.d(TAG, "Build.SERIAL is " + Build.SERIAL);
@@ -1082,34 +1081,25 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM> e
             pi = pm.getPackageInfo(getPackageName(), 0);
             majorVer = pi.versionName;
         } catch (NameNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         iDRVersion version = new iDRVersion();
         setTitle(getResources().getString(com.jf.scanerlib.R.string.app_name) + "V" + majorVer + "(" + version.getSvnRevision() + ")");
-
-
         soundPlayer = new ReadCardSound(this);
         //初始化界面
         setContentView(com.jf.scanerlib.R.layout.readcard);
-
         ////默认读卡模式为自动
         //mSpinnerMode.setSelection(ReadMode.AUTO.getValue());
         ////读卡类型为A卡/B卡
         //mSpinnerType.setSelection(ReadType.A_AND_B.getValue());
-
         mButtonPause.setEnabled(false);
         mButtonStop.setEnabled(false);
         mButtonStart.setEnabled(false);
-
         //绑定读卡服务
         bindReadCardService();
         mTextStatus = "正在初始化";
-
         mBCardInfo = new BCardInfo();
-
         setClientState(ReadState.st_init);
-        
         UpdateSystemThread updateThread = new UpdateSystemThread(this);
         updateThread.start();
     }
