@@ -56,8 +56,7 @@ import java.io.InputStreamReader;
 import java.io.RandomAccessFile;
 import java.io.UnsupportedEncodingException;
 
-public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
-        extends BaseDBActivity<X, T> implements OnClickListener, OnItemSelectedListener {
+public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM> extends BaseDBActivity<X, T> implements OnClickListener {
 
     private Button mButtonPause;
     private Button mButtonStop;
@@ -304,8 +303,7 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
                 //停止成功
                 if (isNeedStart) {
                     isNeedStart = false;
-                    if ((mReadCardService != null)
-                            && (mRdrBean != null)) {
+                    if ((mReadCardService != null) && (mRdrBean != null)) {
                         try {
                             mReadCardService.start(mRdrBean);
                             startRollingTimer(ROLL_INTERVAL, true);
@@ -701,8 +699,7 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
                 mTextStatus = "正在启动读卡...";
 
                 mRdrBean = (ReaderBean) msg.obj;
-                if ((mReadCardService != null)
-                        && (mRdrBean != null)) {
+                if ((mReadCardService != null) && (mRdrBean != null)) {
                     //先发送启动读卡请求,然后等待事件EVT_STARTED 或者 查状态定时器到事件EVT_TIMEOUT_ROLL
                     try {
                         mReadCardService.start(mRdrBean);
@@ -814,8 +811,7 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
             }
             break;
             case MainMsg.EVT_STOPPED: {
-                if ((mReadCardService != null)
-                        && (mRdrBean != null)) {
+                if ((mReadCardService != null) && (mRdrBean != null)) {
                     mTextStatus = "已停止读卡";
 
                     mButtonPause.setEnabled(false);
@@ -1017,7 +1013,6 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
                     }
                     break;
                     case st_fault: {
-                        //lihuili 2016-01-14 st_fault是多余, 程序不会调用procOnFault
                         procOnFault(msg);
                     }
                     break;
@@ -1095,11 +1090,7 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
-
-        TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         Log.d(TAG, "Build.SERIAL is " + Build.SERIAL);
-        //Log.d(TAG, "getSimSerialNumber is " + tm.getSimSerialNumber());
-        //Log.d(TAG, "getDeviceId is " + tm.getDeviceId());
 
         register();
 
@@ -1251,25 +1242,7 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-//        if (arg0 == mSpinnerMode) {
-//            Log.d(TAG, "mSpinnerMode");
-//
-//        } else if (arg0 == mSpinnerType) {
-//            Log.d(TAG, "mSpinnerType");
-//        }
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> arg0) {
-        // TODO Auto-generated method stub
-        Log.d(TAG, "onNothingSelected");
-
-    }
-
-    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        // TODO Auto-generated method stub
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             Message send_msg = new Message();
             send_msg.what = MainMsg.EVT_APP_EXIT;
@@ -1280,35 +1253,9 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
         return false;
     }
 
-    public String getIMEIDStrS(File file) {
-        FileInputStream fis;
-        InputStreamReader isr;
-        BufferedReader br;
-        String line = null;
-        try {
-            fis = new FileInputStream(file);
-            isr = new InputStreamReader(fis, "UTF-8");
-            br = new BufferedReader(isr);
-            line = br.readLine();
-            br.close();
-            isr.close();
-            fis.close();
-
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        return line;
-
-    }
-
+    /**
+     * 系统更新
+     * */
     public class UpdateSystemThread extends Thread {
         private Context context;
 
@@ -1317,9 +1264,7 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
         }
 
         public void run() {
-
             //lihuili add 2016-05-26 增加系统补丁更新操作：如果patch.sh文件不不存在，则执行copy和更新。
-
             try {
                 boolean is_need_copy = SystemPatch.CheckNeedCopy(context);
                 Log.d(TAG, "is_need_copy?" + is_need_copy);
@@ -1357,10 +1302,8 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
                 e1.printStackTrace();
             }
             //end---------------------------------------------------------------------
-
         }
     }
-    //end
 
     private boolean IsVolumeOk(String path) {
         boolean ret = false;
@@ -1375,96 +1318,4 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
         return ret;
     }
 
-    private boolean write_SAMID_IMEI_MEID_ToFile(String samId) {
-        boolean is_write = false;
-        //lihuili add 2016-05-31: read samid/imei/meid, write to file
-        String extsd_path = iDRPath.get_ExtSdcardBase();//iDRPath.getExternalStorageDirectory();
-        if (extsd_path != null && IsVolumeOk(extsd_path)) {
-            String term_info_filepath = extsd_path + File.separator + TERM_INFO_FILENAME;
-
-            //写SAMID=,IMEI=,MEID= 到idr410.txt
-            File file = new File(term_info_filepath);
-            if (!file.exists()) {
-                try {
-                    file.createNewFile();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-
-            //读meid.txt文件获取meid imei
-            String deviceId = null;
-            File meidfile = new File(IEMI_FILEPATH);
-            if (meidfile.exists()) {
-                deviceId = getIMEIDStrS(meidfile);
-            }
-
-            if (deviceId != null) {
-                String writeStr = "SAMID=" + samId + "," + deviceId + "\r\n";
-                try {
-                    RandomAccessFile randomFile = new RandomAccessFile(file, "rw");
-                    long fileLength = randomFile.length();
-                    randomFile.seek(fileLength);
-                    randomFile.writeBytes(writeStr);
-                    randomFile.close();
-
-                    WaitingForDialog dialogResult = new WaitingForDialog(this, "写模块号、IMEI和MEID到文件成功！");
-                    dialogResult.showResult();
-
-                    is_write = true;
-                } catch (FileNotFoundException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        }
-        return is_write;
-    }
-
-    private boolean write_cardsn_ToFile(String cardsn) {
-        boolean is_write = false;
-
-        String extsd_path = Storage.getInternalPath();
-        if (extsd_path != null && IsVolumeOk(extsd_path)) {
-            String term_info_filepath = extsd_path + File.separator + CARDA_FILENAME;
-
-            //写SAMID=,IMEI=,MEID= 到idr410.txt
-            File file = new File(term_info_filepath);
-            if (!file.exists()) {
-                try {
-                    file.createNewFile();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-
-            if (cardsn != null) {
-                String writeStr = cardsn + "\r\n";
-                try {
-                    RandomAccessFile randomFile = new RandomAccessFile(file, "rw");
-                    long fileLength = randomFile.length();
-                    randomFile.seek(fileLength);
-                    randomFile.writeBytes(writeStr);
-                    randomFile.close();
-
-//					 WaitingForDialog dialogResult=new WaitingForDialog(this,"写模块号、IMEI和MEID到文件成功！");
-//					 dialogResult.showResult();
-
-                    is_write = true;
-                } catch (FileNotFoundException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        }
-        return is_write;
-    }
 }
