@@ -11,6 +11,6 @@ public interface Hosts {
     String FILEERVER_URL = "113.207.122.60";
     String FILESERVER_PORT = "81";
 
-    String HTTPSERVER_URL = "http://haoli.cqta.gov.cn:8082/cqhl/";
+    String HTTPSERVER_URL = "http://223.85.87.71:8090/smzjy/";
     String HTTPSERVER_PORT = "";
 }

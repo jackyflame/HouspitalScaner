@@ -3,6 +3,7 @@ package com.jf.houspitalscaner.net.worker;
 import com.haozi.baselibrary.net.retrofit.BaseWorker;
 import com.haozi.baselibrary.net.retrofit.ReqCallback;
 import com.haozi.baselibrary.net.retrofit.RetrofitHelper;
+import com.jf.houspitalscaner.net.entity.IDInfor;
 import com.jf.houspitalscaner.net.entity.ImageEntity;
 import com.jf.houspitalscaner.net.entity.UserEntity;
 import com.jf.houspitalscaner.net.service.UserService;
@@ -12,6 +13,7 @@ import java.io.File;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import retrofit2.http.Query;
 
 /**
  * Created by Android Studio.
@@ -33,18 +35,24 @@ public class UserWorker extends BaseWorker {
         defaultCall(userService.registerOrLogin(username,password),callback);
     }
 
-    public void modifyUserInfo(String nickname, String mobile,String userId,ReqCallback<UserEntity> callback){
-        defaultCall(userService.modifyUserInfo(nickname,mobile,userId),callback);
+    public void record(IDInfor idInfor, ReqCallback<String> callback){
+        record(idInfor.getName(),idInfor.getNum(),idInfor.getSex(),idInfor.getBirthday(),
+                idInfor.getNation(),idInfor.getAddress(),idInfor.getHospital(),idInfor.getHeaderImg(),callback);
     }
 
-    public void uploadUserPhoto(String filePath,String userId,ReqCallback<ImageEntity> callback){
+    public void record(String name,String idcard,String sex,String birthday,String nation,
+                       String address,String hospital,String idcardPhotoId,ReqCallback<String> callback){
+        defaultCall(userService.record(name,idcard,sex,birthday,nation,address,hospital,idcardPhotoId),callback);
+    }
+
+    public void uploadPhoto(String filePath,ReqCallback<ImageEntity> callback){
         File file = new File(filePath);
-        uploadUserPhoto(file,userId,callback);
+        uploadPhoto(file,callback);
     }
 
-    public void uploadUserPhoto(File file,String userId,ReqCallback<ImageEntity> callback){
+    public void uploadPhoto(File file,ReqCallback<ImageEntity> callback){
         RequestBody requestBody = RequestBody.create(MediaType.parse("image/*"),file);
         MultipartBody.Part body = MultipartBody.Part.createFormData("uploadFile",file.getName(),requestBody);
-        defaultCall(userService.uploadUserPhoto(body,userId),callback);
+        defaultCall(userService.uploadPhoto(body),callback);
     }
 }

@@ -8,6 +8,7 @@ import com.haozi.baselibrary.event.HttpEvent;
 import com.haozi.baselibrary.net.config.ErrorType;
 import com.haozi.baselibrary.net.retrofit.ReqCallback;
 import com.haozi.baselibrary.utils.StringUtil;
+import com.jf.houspitalscaner.net.entity.IDInfor;
 import com.jf.houspitalscaner.net.entity.ImageEntity;
 import com.jf.houspitalscaner.net.entity.UserEntity;
 import com.jf.houspitalscaner.net.worker.UserWorker;
@@ -52,7 +53,6 @@ public class UserPresent extends BasePresent {
         }
     }
 
-
     public void cleanUserData() {
         MyShareDbHelper.putString(SPKeys.SPKEY_USERINFO,"");
     }
@@ -69,13 +69,8 @@ public class UserPresent extends BasePresent {
         userWorker.registerOrLogin(username,password,callback);
     }
 
-    public void modifyUserInfo(String nickname, String mobile,ReqCallback<UserEntity> callback){
-        String nowUserId = getNowUserId();
-        if(StringUtil.isEmpty(nowUserId)){
-            callback.onReqError(new HttpEvent(ErrorType.ERROR_INVALID_USER,"用户未登录"));
-        }else{
-            userWorker.modifyUserInfo(nickname,mobile,nowUserId,callback);
-        }
+    public void record(IDInfor idInfor, ReqCallback<String> callback){
+        userWorker.record(idInfor,callback);
     }
 
     public void uploadUserPhoto(String filePath,ReqCallback<ImageEntity> callback){
@@ -83,7 +78,7 @@ public class UserPresent extends BasePresent {
         if(StringUtil.isEmpty(nowUserId)){
             callback.onReqError(new HttpEvent(ErrorType.ERROR_INVALID_USER,"用户未登录"));
         }else{
-            userWorker.uploadUserPhoto(filePath,nowUserId,callback);
+            userWorker.uploadPhoto(filePath,callback);
         }
     }
 
@@ -92,7 +87,7 @@ public class UserPresent extends BasePresent {
         if(StringUtil.isEmpty(nowUserId)){
             callback.onReqError(new HttpEvent(ErrorType.ERROR_INVALID_USER,"用户未登录"));
         }else{
-            userWorker.uploadUserPhoto(file,nowUserId,callback);
+            userWorker.uploadPhoto(file,callback);
         }
     }
 }

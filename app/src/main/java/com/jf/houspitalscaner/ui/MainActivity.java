@@ -1,7 +1,6 @@
 package com.jf.houspitalscaner.ui;
 
 import android.content.DialogInterface;
-import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -79,6 +78,10 @@ public class MainActivity extends BaseReadCardActivity<ActivityMainBinding,MainV
     }
 
     public void updateTextCardInfo(boolean flag, ReadType rdType){
-        viewModel.setIdInfor(mBCardInfo);
+        if(flag == false){
+            viewModel.setIdInfor(null);
+        }else{
+            viewModel.setIdInfor(mBCardInfo);
+        }
     }
 }

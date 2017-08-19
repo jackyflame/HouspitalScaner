@@ -47,7 +47,11 @@ public class MainVM extends BaseVM {
     }
 
     public void setIdInfor(BCardInfo idInfor) {
-        this.idInfor = new IDInfor(idInfor);
+        if(idInfor == null){
+            this.idInfor = null;
+        }else{
+            this.idInfor = new IDInfor(idInfor);
+        }
         notifyPropertyChanged(BR.idInfor);
     }
 

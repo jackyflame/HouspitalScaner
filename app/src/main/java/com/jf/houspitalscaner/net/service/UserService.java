@@ -33,19 +33,26 @@ public interface UserService {
 
     /**
      * 注册登录
-     * @param nickname 昵称
-     * @param mobile 手机号码
-     * @param userId 用户id
+     * @param name:姓名
+     * @param idcard：身份证号
+     * @param sex：性别
+     * @param birthday：出生日期
+     * @param nation：民族
+     * @param address：地址
+     * @param hospital：医院（字典）
+     * @param idcardPhotoId：现场照片id
      * */
-    @GET("userController.do?modifyUserInfo")
-    Observable<Response<RespEntity<UserEntity>>> modifyUserInfo(@Query(value = "nickname") String nickname, @Query(value = "mobile") String mobile, @Query(value = "userId") String userId);
+    @GET("hospitalRecordController.do?record")
+    Observable<Response<RespEntity<String>>> record(@Query(value = "name") String name, @Query(value = "idcard") String idcard
+                                                    ,@Query(value = "sex") String sex, @Query(value = "birthday") String birthday
+                                                    ,@Query(value = "nation") String nation, @Query(value = "address") String address
+                                                    ,@Query(value = "hospital") String hospital, @Query(value = "idcardPhotoId") String idcardPhotoId);
 
     /**
      * 上传头像
      * @param file 文件信息
      * */
     @Multipart
-    @POST("userController.do?uploadUserPhoto")
-    Observable<Response<RespEntity<ImageEntity>>> uploadUserPhoto(@Part MultipartBody.Part file, @Query(value = "userId") String userId);
-
+    @POST("fuelingRecordController.do?uploadPhoto")
+    Observable<Response<RespEntity<ImageEntity>>> uploadPhoto(@Part MultipartBody.Part file);
 }

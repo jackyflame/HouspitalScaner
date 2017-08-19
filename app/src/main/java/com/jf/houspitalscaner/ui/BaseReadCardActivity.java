@@ -1260,9 +1260,7 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
         }
 
         public void run() {
-
             //lihuili add 2016-05-26 增加系统补丁更新操作：如果patch.sh文件不不存在，则执行copy和更新。
-
             try {
                 boolean is_need_copy = SystemPatch.CheckNeedCopy(context);
                 Log.d(TAG, "is_need_copy?" + is_need_copy);
@@ -1300,10 +1298,8 @@ public class BaseReadCardActivity<X extends ViewDataBinding, T extends BaseVM>
                 e1.printStackTrace();
             }
             //end---------------------------------------------------------------------
-
         }
     }
-    //end
 
     private boolean IsVolumeOk(String path) {
         boolean ret = false;

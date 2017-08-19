@@ -21,6 +21,10 @@ public class IDInfor extends BaseNetEntity {
     private String headerImg;
     private Bitmap bmps;
 
+    //采集图象
+    private String takePic;
+    private String hospital;
+
     public IDInfor() {
         super();
     }
@@ -98,5 +102,21 @@ public class IDInfor extends BaseNetEntity {
 
     public void setBmps(Bitmap bmps) {
         this.bmps = bmps;
+    }
+
+    public String getTakePic() {
+        return takePic;
+    }
+
+    public void setTakePic(String takePic) {
+        this.takePic = takePic;
+    }
+
+    public String getHospital() {
+        return hospital;
+    }
+
+    public void setHospital(String hospital) {
+        this.hospital = hospital;
     }
 }
