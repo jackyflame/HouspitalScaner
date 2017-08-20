@@ -51,15 +51,14 @@ public class MainVM extends BaseVM<UserPresent> {
             this.idInfor = null;
         }else{
             this.idInfor = new IDInfor(idInforNew);
-            idInfor.setName("张三");
-            idInfor.setNum("510622198805052211");
-            idInfor.setSex("男");
-            idInfor.setNation("汉族");
-            idInfor.setAddress("四川省成都市成华区将军路223号");
-            idInfor.setBirthday("1988年8月12号");
-            Bitmap bmp= BitmapFactory.decodeResource(activity.getResources(), R.mipmap.ic_launcher);
-            idInfor.setBmps(bmp);
-
+//            idInfor.setName("张三");
+//            idInfor.setNum("510622198805052211");
+//            idInfor.setSex("男");
+//            idInfor.setNation("汉族");
+//            idInfor.setAddress("四川省成都市成华区将军路223号");
+//            idInfor.setBirthday("1988年8月12号");
+//            Bitmap bmp= BitmapFactory.decodeResource(activity.getResources(), R.mipmap.ic_launcher);
+//            idInfor.setBmps(bmp);
             uploadIdHeader();
         }
         notifyPropertyChanged(BR.idInfor);
