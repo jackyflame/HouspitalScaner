@@ -21,6 +21,16 @@ android {
     dataBinding {
         enabled = true
     }
+
+    //签名配置
+    signingConfigs {
+        release {
+            storeFile file("../houspitalscaner.jks")
+            storePassword "666666"
+            keyAlias 'houspitalscaner'
+            keyPassword '666666'
+        }
+    }
 }
 
 dependencies {
