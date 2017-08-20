@@ -70,24 +70,15 @@ public class UserPresent extends BasePresent {
     }
 
     public void record(IDInfor idInfor, ReqCallback<String> callback){
+        idInfor.setHospital(MyShareDbHelper.getString(SPKeys.SPKEY_HOSPITAL,"未设置"));
         userWorker.record(idInfor,callback);
     }
 
-    public void uploadUserPhoto(String filePath,ReqCallback<ImageEntity> callback){
-        String nowUserId = getNowUserId();
-        if(StringUtil.isEmpty(nowUserId)){
-            callback.onReqError(new HttpEvent(ErrorType.ERROR_INVALID_USER,"用户未登录"));
-        }else{
-            userWorker.uploadPhoto(filePath,callback);
-        }
+    public void uploadPhoto(String filePath,ReqCallback<ImageEntity> callback){
+        userWorker.uploadPhoto(filePath,callback);
     }
 
-    public void uploadUserPhoto(File file, ReqCallback<ImageEntity> callback){
-        String nowUserId = getNowUserId();
-        if(StringUtil.isEmpty(nowUserId)){
-            callback.onReqError(new HttpEvent(ErrorType.ERROR_INVALID_USER,"用户未登录"));
-        }else{
-            userWorker.uploadPhoto(file,callback);
-        }
+    public void uploadPhoto(File file, ReqCallback<ImageEntity> callback){
+        userWorker.uploadPhoto(file,callback);
     }
 }

@@ -12,7 +12,7 @@ public interface IActivityViewTools {
 
     void showProgressDialog(boolean cancelable,String content);
 
-    void hideProgressDialog();
+    void dismissProgressDialog();
 
     void showToast(int stringRes);
 

@@ -5,6 +5,7 @@ import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.haozi.baselibrary.utils.StringUtil;
 import com.haozi.baselibrary.utils.ViewUtils;
@@ -15,6 +16,8 @@ import com.routon.idr.idrinterface.readcard.ReadType;
 
 public class MainActivity extends BaseReadCardActivity<ActivityMainBinding,MainVM> {
 
+    private ImageView headerImg;
+
     @Override
     protected void initView() {
         //绑定布局值
@@ -22,6 +25,7 @@ public class MainActivity extends BaseReadCardActivity<ActivityMainBinding,MainV
         mButtonPause = findViewById(R.id.mButtonPause);
         mButtonStop = findViewById(R.id.mButtonStop);
         mButtonStart = findViewById(R.id.mButtonStart);
+        headerImg = findViewById(R.id.img_header);
         //初始化按钮
         super.initView();
     }
@@ -83,5 +87,9 @@ public class MainActivity extends BaseReadCardActivity<ActivityMainBinding,MainV
         }else{
             viewModel.setIdInfor(mBCardInfo);
         }
+    }
+
+    public void cleanPic() {
+        //headerImg.setImageDrawable(null);
     }
 }

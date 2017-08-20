@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.haozi.baselibrary.R;
 import com.haozi.baselibrary.interfaces.listeners.DialogCallBack;
@@ -81,6 +82,10 @@ public class ViewUtils {
         AlertDialog alertDialog = dialogBuilder.create();
         alertDialog.show();
         return alertDialog;
+    }
+
+    public static void Toast(Context context, String msg){
+        Toast.makeText(context,msg,Toast.LENGTH_SHORT).show();
     }
 
 }

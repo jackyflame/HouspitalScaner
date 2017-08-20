@@ -164,7 +164,7 @@ public class BaseDBActivity<X extends ViewDataBinding,T extends BaseVM> extends 
     }
 
     @Override
-    public void hideProgressDialog() {
+    public void dismissProgressDialog() {
         if (progressDialog != null && progressDialog.isShowing()){
             progressDialog.dismiss();
             progressContent = null;

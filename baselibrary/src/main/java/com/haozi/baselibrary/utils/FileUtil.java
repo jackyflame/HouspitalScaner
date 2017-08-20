@@ -18,8 +18,7 @@ public abstract class FileUtil {
 
     public static String PROJECT_DIR;
     public static String PROJECT_IMAGE_DIR;
-    public static String PROJECT_IMAGETAKE_DIR = Environment.getExternalStorageDirectory().getAbsolutePath()
-            + File.separator + BaseApplication.getInstance().getPackageName() + File.separator + "CacheImage";
+    public static String PROJECT_IMAGE_HEADER_CACHE;
 
     private static final String TAG = "FileUtil";
 
@@ -43,6 +42,8 @@ public abstract class FileUtil {
         if (!dir.exists()) {
             dir.mkdirs();
         }
+
+        PROJECT_IMAGE_HEADER_CACHE = PROJECT_DIR + File.separator + "image" + File.separator + "hearder_temp.jpg";
     }
 
     public static boolean delete(String fileName) {
