@@ -6,6 +6,7 @@ import android.databinding.Bindable;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 
 import com.haozi.baselibrary.constants.SPKeys;
@@ -35,6 +36,7 @@ public class MainVM extends BaseVM<UserPresent> {
 
     private MainActivity activity;
     private IDInfor idInfor;
+    private AlertDialog msgDialog;
 
     public MainVM(MainActivity activity) {
         super(new UserPresent());
@@ -121,7 +123,8 @@ public class MainVM extends BaseVM<UserPresent> {
             @Override
             public void onNetResp(String response) {
                 activity.dismissProgressDialog();
-                ViewUtils.showMsgDialog(activity,"上传身份证信息成功");
+                msgDialog = ViewUtils.showMsgDialog(activity,"上传身份证信息成功");
+                activity.postDelayDialogDissmiss();
                 //清空记录
                 setIdInfor(null);
                 activity.cleanPic();
@@ -132,5 +135,11 @@ public class MainVM extends BaseVM<UserPresent> {
                 ViewUtils.Toast(activity,"上传身份证信息失败，请重新扫描");
             }
         });
+    }
+
+    public void dismissDialog(){
+        if(msgDialog != null && msgDialog.isShowing()){
+            msgDialog.dismiss();
+        }
     }
 }

@@ -1,6 +1,8 @@
 package com.jf.houspitalscaner.ui;
 
 import android.content.DialogInterface;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +19,8 @@ import com.routon.idr.idrinterface.readcard.ReadType;
 public class MainActivity extends BaseReadCardActivity<ActivityMainBinding,MainVM> {
 
     private ImageView headerImg;
+    private Handler mHanlder;
+    public static final int HANDLER_DISMISS = 4000;
 
     @Override
     protected void initView() {
@@ -28,6 +32,16 @@ public class MainActivity extends BaseReadCardActivity<ActivityMainBinding,MainV
         headerImg = findViewById(R.id.img_header);
         //初始化按钮
         super.initView();
+
+        mHanlder = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                if(msg.what == HANDLER_DISMISS){
+                    viewModel.dismissDialog();
+                }
+            }
+        };
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -91,5 +105,11 @@ public class MainActivity extends BaseReadCardActivity<ActivityMainBinding,MainV
 
     public void cleanPic() {
         //headerImg.setImageDrawable(null);
+    }
+
+    public void postDelayDialogDissmiss() {
+        if(mHanlder != null){
+            mHanlder.sendEmptyMessageDelayed(HANDLER_DISMISS,5000);
+        }
     }
 }
