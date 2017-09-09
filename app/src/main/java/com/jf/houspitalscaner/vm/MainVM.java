@@ -16,6 +16,7 @@ import com.haozi.baselibrary.net.retrofit.ReqCallback;
 import com.haozi.baselibrary.utils.BitmapUtils;
 import com.haozi.baselibrary.utils.FileUtil;
 import com.haozi.baselibrary.utils.StringUtil;
+import com.haozi.baselibrary.utils.SystemUtil;
 import com.haozi.baselibrary.utils.ViewUtils;
 import com.jf.houspitalscaner.BR;
 import com.jf.houspitalscaner.R;
@@ -26,6 +27,8 @@ import com.jf.houspitalscaner.net.entity.ImageEntity;
 import com.jf.houspitalscaner.ui.MainActivity;
 import com.jf.scanerlib.ClientReadCardActivity;
 import com.routon.idr.idrinterface.readcard.BCardInfo;
+
+import java.io.File;
 
 
 /**
@@ -53,14 +56,6 @@ public class MainVM extends BaseVM<UserPresent> {
             this.idInfor = null;
         }else{
             this.idInfor = new IDInfor(idInforNew);
-//            idInfor.setName("张三");
-//            idInfor.setNum("510622198805052211");
-//            idInfor.setSex("男");
-//            idInfor.setNation("汉族");
-//            idInfor.setAddress("四川省成都市成华区将军路223号");
-//            idInfor.setBirthday("1988年8月12号");
-//            Bitmap bmp= BitmapFactory.decodeResource(activity.getResources(), R.mipmap.ic_launcher);
-//            idInfor.setBmps(bmp);
             uploadIdHeader();
         }
         notifyPropertyChanged(BR.idInfor);
@@ -75,8 +70,11 @@ public class MainVM extends BaseVM<UserPresent> {
     }
 
     public void onScanClick(View view){
-        Intent intent = new Intent(activity,ClientReadCardActivity.class);
-        activity.startActivity(intent);
+        uploadScanInfo();
+    }
+
+    public void onImageTakeClick(View view){
+        SystemUtil.takePicture(activity,activity.INPUT_CONTENT_TACKPIC);
     }
 
     public void uploadIdHeader(){
@@ -95,7 +93,7 @@ public class MainVM extends BaseVM<UserPresent> {
                 public void onNetResp(ImageEntity response) {
                     if(response != null && !StringUtil.isEmpty(response.getId()) && idInfor != null){
                         idInfor.setHeaderImg(response.getId());
-                        uploadScanInfo();
+                        //uploadScanInfo();
                     }else{
                         activity.dismissProgressDialog();
                         ViewUtils.Toast(activity,"上传身份证头像失败，请重新扫描身份证上传");
@@ -113,6 +111,10 @@ public class MainVM extends BaseVM<UserPresent> {
     private void uploadScanInfo(){
         if(idInfor == null){
             ViewUtils.Toast(activity,"请重新扫描身份证");
+            return;
+        }
+        if(StringUtil.isEmpty(idInfor.getHeaderImg())){
+            ViewUtils.Toast(activity,"上传身份证头像失败，请重新扫描身份证上传");
             return;
         }
         mPrensent.record(idInfor, new ReqCallback<String>() {
@@ -133,6 +135,28 @@ public class MainVM extends BaseVM<UserPresent> {
             public void onReqError(HttpEvent httpEvent) {
                 activity.dismissProgressDialog();
                 ViewUtils.Toast(activity,"上传身份证信息失败，请重新扫描");
+            }
+        });
+    }
+
+    public void uploadImage(File pic) {
+        mPrensent.uploadPhoto(pic, new ReqCallback<ImageEntity>() {
+            @Override
+            public void onReqStart() {
+                activity.showProgressDialog();
+            }
+            @Override
+            public void onNetResp(ImageEntity response) {
+                activity.dismissProgressDialog();
+                if(idInfor != null && response != null){
+                    idInfor.setTakePic(response.getId());
+                }
+            }
+            @Override
+            public void onReqError(HttpEvent httpEvent) {
+                activity.dismissProgressDialog();
+                ViewUtils.Toast(activity,"上传失败："+httpEvent.getMessage());
+                activity.cleanPic();
             }
         });
     }

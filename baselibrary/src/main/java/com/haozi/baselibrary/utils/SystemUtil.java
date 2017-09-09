@@ -183,7 +183,7 @@ public class SystemUtil {
 			dir.mkdirs();
 		}
 		//拍照路径设置
-		takePicFile = new File(FileUtil.PROJECT_IMAGE_DIR, System.nanoTime() + ".jpg");
+		takePicFile = new File(FileUtil.PROJECT_IMAGE_DIR, "take_tmp.jpg");
 		try {
 			takePicFile.createNewFile();
 			Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);

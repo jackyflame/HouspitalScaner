@@ -46,7 +46,9 @@ public interface UserService {
     Observable<Response<RespEntity<String>>> record(@Query(value = "name") String name, @Query(value = "idcard") String idcard
                                                     ,@Query(value = "sex") String sex, @Query(value = "birthday") String birthday
                                                     ,@Query(value = "nation") String nation, @Query(value = "address") String address
-                                                    ,@Query(value = "hospital") String hospital, @Query(value = "idcardPhotoId") String idcardPhotoId);
+                                                    ,@Query(value = "hospital") String hospital
+                                                    ,@Query(value = "idcardPhotoId") String idcardPhotoId
+                                                    ,@Query(value = "scenePhotoId") String scenePhotoId);
 
     /**
      * 上传头像

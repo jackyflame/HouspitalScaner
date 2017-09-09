@@ -37,12 +37,13 @@ public class UserWorker extends BaseWorker {
 
     public void record(IDInfor idInfor, ReqCallback<String> callback){
         record(idInfor.getName(),idInfor.getNum(),idInfor.getSex(),idInfor.getBirthday(),
-                idInfor.getNation(),idInfor.getAddress(),idInfor.getHospital(),idInfor.getHeaderImg(),callback);
+                idInfor.getNation(),idInfor.getAddress(),idInfor.getHospital(),idInfor.getHeaderImg(),
+                idInfor.getTakePic(),callback);
     }
 
     public void record(String name,String idcard,String sex,String birthday,String nation,
-                       String address,String hospital,String idcardPhotoId,ReqCallback<String> callback){
-        defaultCall(userService.record(name,idcard,sex,birthday,nation,address,hospital,idcardPhotoId),callback);
+                       String address,String hospital,String idcardPhotoId,String scenePhotoId,ReqCallback<String> callback){
+        defaultCall(userService.record(name,idcard,sex,birthday,nation,address,hospital,idcardPhotoId,scenePhotoId),callback);
     }
 
     public void uploadPhoto(String filePath,ReqCallback<ImageEntity> callback){
