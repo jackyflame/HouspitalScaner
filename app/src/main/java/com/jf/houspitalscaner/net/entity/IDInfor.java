@@ -3,6 +3,7 @@ package com.jf.houspitalscaner.net.entity;
 import android.graphics.Bitmap;
 
 import com.haozi.baselibrary.net.entity.BaseNetEntity;
+import com.haozi.baselibrary.utils.StringUtil;
 import com.routon.idr.idrinterface.readcard.BCardInfo;
 
 /**
@@ -69,7 +70,11 @@ public class IDInfor extends BaseNetEntity {
     }
 
     public void setBirthday(String birthday) {
-        this.birthday = birthday;
+        if(!StringUtil.isEmpty(birthday) && birthday.length() == 8){
+            this.birthday = birthday.substring(0,4)+"年"+birthday.substring(4,6)+"月"+birthday.substring(6,8)+"日";
+        }else{
+            this.birthday = birthday;
+        }
     }
 
     public String getAddress() {
